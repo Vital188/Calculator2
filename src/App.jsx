@@ -80,7 +80,14 @@ function Main() {
             category
         }}>
             <div className="container">
-                
+                <div className="d-grid gap-0">
+                <div class="p-2 bg-light border text-xl-center" style={{
+                    fontSize: '30px',
+                    borderRadius: '10px',
+                    marginTop: '15px'
+                }}>Ethereum Staking Profit Calculator</div>
+                </div>
+
                 <div className="row">
                     <div className="col col-lg-4 col-md-12">
                         <Create />

@@ -1,46 +1,40 @@
 import { useState, useContext } from "react";
-// import DataContext from "./Contexts/DataContext";
 import Book from "./Contexts/Book";
-// import getBase64 from "./Functions/getBase64";
-import Year from "./Components/Data/Year"
+import Year from "./Components/Data/Year";
+import Duration from "./Components/Data/Duration";
+import Reinvest from "./Components/Data/Reinvest";
+import Rewardrate from "./Components/Data/Rewardrate";
 
 function Create() {
-  const [titl, setTitl] = useState('0');
-  const [type, setType] = useState('');
-  const [years, setYears] = useState('0');
-  // const [color, setColor] = useState('0');
-  // const [price, setPrice] = useState("");
-  // const fileInput = useRef();
-
-  const { setCreateData, category } = useContext(Book);
-  // const { makeMsg } = useContext(DataContext);
-
-  // const [photoPrint, setPhotoPrint] = useState(null);
-
-  // const doPhoto = () => {
-  //   getBase64(fileInput.current.files[0])
-  //     .then((photo) => setPhotoPrint(photo))
-  //     .catch((_) => {
-     
-  //     });
-  // };
+  const [amount, setAmount] = useState('');
+  const [startDate, setstartDate] = useState('');
+  const [rewardRate, setrewardRate] = useState('0');
+  const [duration, setDuration] = useState('0');
+  const [reinvest, setReinvest] = useState('0');
+  const { setCreateData} = useContext(Book);
+ 
 
   const add = () => {
     setCreateData({
-      cat_id:  parseInt(titl),
-      type,
-      years,
-      // image: photoPrint
+      amount,
+      startDate,
+      rewardRate,
+      duration,
+      reinvest
     });
-    setTitl('0')
-    setType('');
-    setYears('0');
+    setAmount('')
+    setstartDate('');
+    setrewardRate('0');
+    setDuration('0');
+    setReinvest('0')
   };
 
   const remove = () => {
-    setTitl('0')
-    setType('');
-    setYears('0');
+    setAmount('')
+    setstartDate('');
+    setrewardRate('0');
+    setDuration('0');
+    setReinvest('0')
   };
 
 
@@ -55,81 +49,82 @@ function Create() {
                 marginBottom: '-20px',
             }}>
                     <label className="form-label">Initial Investment Amount of ETH</label>
-                    <input type="text" className="form-control" value={type} onChange={e => setType(e.target.value)} />
+                    <input startDate="text" className="form-control" value={amount} onChange={e => setAmount(e.target.value)} />
                 </div>
         </div>
         <label className="form-label">Staking start date</label>
       <select
           className="form-select mb-4"
           
-          value={titl}
-          onChange={(e) => setTitl(e.target.value)}
+          value={startDate}
+          onChange={(e) => setstartDate(e.target.value)}
           aria-label="Default select example"
         >
           <option value={0} disabled>
             Choose from list:
           </option>
-          {category?.map((cl) => (
+          {Year?.map((cl) => (
             <option key={cl.id} value={cl.id}>
               {cl.titl}
             </option>
           ))}
         </select>
-        <label className="form-label">Yearly stacking reward rate</label>
+        <label className="form-label">Yearly stacking reward rate (%)</label>
         <select
           className="form-select mb-4"
-          value={titl}
-          onChange={(e) => setTitl(e.target.value)}
+          value={rewardRate}
+          onChange={(e) => setrewardRate(e.target.value)}
           aria-label="Default select example"
         >
           <option value={0} disabled>
             Choose from list:
           </option>
-          {category?.map((cl) => (
-            <option key={cl.id} value={cl.id}>
-              {cl.titl}
+          {Rewardrate?.map((rw) => (
+            <option key={rw.id} value={rw.id}>
+              {rw.type}
             </option>
           ))}
         </select>
-        <label className="form-label">Staking Duration</label>
+        <label className="form-label">Staking Duration (months)</label>
         <select
           className="form-select mb-4"
-          value={years}
-          onChange={(e) => setYears(e.target.value)}
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
           aria-label="Default select example"
         >
           <option value={0} disabled>
             Choose from list:
           </option>
-          {Year?.map((size) => (
-            <option key={size.id} value={size.type}>
-             {size.type}
+          {Duration?.map((dur) => (
+            <option key={dur.id} value={dur.type}>
+             {dur.type}
             </option>
           ))}
         </select>
         <label className="form-label">Customer desire to reinvest staking rewards</label>
         <select
           className="form-select mb-4"
-          value={years}
-          onChange={(e) => setYears(e.target.value)}
+          value={reinvest}
+          onChange={(e) => setReinvest(e.target.value)}
           aria-label="Default select example"
         >
           <option value={0} disabled>
             Choose from list:
           </option>
-          {Year?.map((size) => (
-            <option key={size.id} value={size.type}>
-             {size.type}
+          {Reinvest?.map((rein) => (
+            <option key={rein.id} value={rein.type}>
+             {rein.type}
             </option>
           ))}
         </select>
         <div className="buttons" style={{
-          display: 'flex'
+          display: 'flex',
+          justifyContent: 'space-between'
         }}>
-         <button onClick={add} type="button" className="btn btn-outline-success">
+         <button onClick={add} startDate="button" className="btn btn-outline-success">
           Add
         </button>
-        <button onClick={remove} type="button" className="btn btn-outline-danger">
+        <button onClick={remove} startDate="button" className="btn btn-outline-danger">
           Delete
         </button>
         </div>
