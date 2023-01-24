@@ -1,13 +1,15 @@
 import { useState, useContext } from "react";
 import Book from "./Contexts/Book";
-import Year from "./Components/Data/Year";
 import Duration from "./Components/Data/Duration";
 import Reinvest from "./Components/Data/Reinvest";
 import Rewardrate from "./Components/Data/Rewardrate";
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Create() {
   const [amount, setAmount] = useState('');
-  const [startDate, setstartDate] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
   const [rewardRate, setrewardRate] = useState('0');
   const [duration, setDuration] = useState('0');
   const [reinvest, setReinvest] = useState('0');
@@ -23,7 +25,7 @@ function Create() {
       reinvest
     });
     setAmount('')
-    setstartDate('');
+    setStartDate('');
     setrewardRate('0');
     setDuration('0');
     setReinvest('0')
@@ -31,7 +33,7 @@ function Create() {
 
   const remove = () => {
     setAmount('')
-    setstartDate('');
+    setStartDate(new Date());
     setrewardRate('0');
     setDuration('0');
     setReinvest('0')
@@ -52,12 +54,16 @@ function Create() {
                     <input startDate="text" className="form-control" value={amount} onChange={e => setAmount(e.target.value)} />
                 </div>
         </div>
-        <label className="form-label">Staking start date</label>
-      <select
+        <label className="form-label">Staking start date:</label>
+        <DatePicker className="form-control" style={{
+          marginBottom: '20px'
+        }}
+        selected={startDate} onChange={(date) => setStartDate(date)} />
+      {/* <select
           className="form-select mb-4"
           
           value={startDate}
-          onChange={(e) => setstartDate(e.target.value)}
+          onChange={(e) => setStartDate(e.target.value)}
           aria-label="Default select example"
         >
           <option value={0} disabled>
@@ -68,7 +74,7 @@ function Create() {
               {cl.titl}
             </option>
           ))}
-        </select>
+        </select> */}
         <label className="form-label">Yearly stacking reward rate (%)</label>
         <select
           className="form-select mb-4"

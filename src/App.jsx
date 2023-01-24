@@ -4,7 +4,6 @@ import DataContext from './Contexts/DataContext';
 import Create from './Create';
 import List from './List';
 import axios from 'axios';
-import Edit from './Edit';
 // import { authConfig } from './Functions/auth';
 import { useContext } from 'react';
 import './App.scss';
@@ -17,7 +16,6 @@ function Main() {
     const [category, setCategory] = useState(null);
     const [deleteData, setDeleteData] = useState(null);
     const [modalData, setModalData] = useState(null);
-    const [editData, setEditData] = useState(null);
     // const { makeMsg } = useContext(DataContext);
 
     // READ for list
@@ -76,12 +74,11 @@ function Main() {
             setDeleteData,
             modalData,
             setModalData,
-            setEditData,
             category
         }}>
             <div className="container">
                 <div className="d-grid gap-0">
-                <div class="p-2 bg-light border text-xl-center" style={{
+                <div class="p-2 bg-success border text-xl-center" style={{
                     fontSize: '30px',
                     borderRadius: '10px',
                     marginTop: '15px'
@@ -97,8 +94,7 @@ function Main() {
                     </div>
                 </div>
             </div>
-            <Edit />
-        </Book.Provider>
+            </Book.Provider>
     )
 }
 export default Main;
