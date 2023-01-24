@@ -1,82 +1,26 @@
 import { useState, useEffect } from 'react';
-import Book from './Contexts/Book';
-import DataContext from './Contexts/DataContext';
 import Create from './Create';
 import List from './List';
-import axios from 'axios';
-// import { authConfig } from './Functions/auth';
-import { useContext } from 'react';
+import { read} from './Functions/localStorage';
 import './App.scss';
 
 function Main() {
 
-    // const [lastUpdate, setLastUpdate] = useState(Date.now());
-    const [createData, setCreateData] = useState(null);
-    const [book, setBook] = useState(null);
-    const [category, setCategory] = useState(null);
-    const [deleteData, setDeleteData] = useState(null);
-    const [modalData, setModalData] = useState(null);
-    // const { makeMsg } = useContext(DataContext);
+    const [consumer, setConsumer] = useState(null);
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const key = 'consumer';
 
-    // READ for list
-    // useEffect(() => {
-    //     axios.get('http://localhost:3003/server/book', authConfig())
-    //         .then(res => {
-    //             setBook(res.data);
-    //         })
-    // }, [lastUpdate]);
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:3003/server/category', authConfig())
-    //         .then(res => {
-    //             setCategory(res.data);
-    //         })
-    // }, [lastUpdate]);
-
-    // useEffect(() => {
-    //     if (null === createData) {
-    //         return;
-    //     }
-    //     axios.post('http://localhost:3003/server/book', createData, authConfig())
-    //         .then(res => {
-    //             setLastUpdate(Date.now());
-    //             makeMsg(res.data.text, res.data.type);
-    //         });
-    // }, [createData, makeMsg]);
-
-    // useEffect(() => {
-    //     if (null === deleteData) {
-    //         return;
-    //     }
-    //     axios.delete('http://localhost:3003/server/book/' + deleteData.id, authConfig())
-    //         .then(res => {
-    //             setLastUpdate(Date.now());
-    //             makeMsg(res.data.text, res.data.type);
-    //         });
-    // }, [deleteData, makeMsg]);
-
-    // useEffect(() => {
-    //     if (null === editData) {
-    //         return;
-    //     }
-    //     axios.put('http://localhost:3003/server/book/' + editData.id, editData, authConfig())
-    //         .then(res => {
-    //             setLastUpdate(Date.now());
-    //             makeMsg(res.data.text, res.data.type);
-    //         });
-    // }, [editData, makeMsg]);
-
-
-    return (
-        <Book.Provider value={{
-            setCreateData,
-            book,
-            setDeleteData,
-            modalData,
-            setModalData,
-            category
-        }}>
-            <div className="container">
+    useEffect(() => {
+        setConsumer(read(key));
+      }, [lastUpdate]);
+    
+    useEffect(() => {
+    const k = localStorage.getItem("consumer");    if (null === k) {
+    setConsumer([]);    } else {
+    setConsumer(JSON.parse(k));    }  }, []);
+    
+     return (
+              <div className="container">
                 <div className="d-grid gap-0">
                 <div class="p-2 bg-success border text-xl-center" style={{
                     fontSize: '30px',
@@ -94,7 +38,6 @@ function Main() {
                     </div>
                 </div>
             </div>
-            </Book.Provider>
     )
 }
 export default Main;

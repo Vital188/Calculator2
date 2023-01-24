@@ -1,18 +1,29 @@
-import { useContext } from 'react';
-import Book from './Contexts/Book';
+import { useEffect, useState } from 'react';
 import Line from './Line';
+import { read } from "./Functions/localStorage";
 
 function List() {
 
-    const { book } = useContext(Book);
+    const [consumer, setConsumer] = useState(null);
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const key = 'consumer';
 
-    return (
+    useEffect(() => {
+        setConsumer(read(key));
+      }, [lastUpdate]);
+    
+    useEffect(() => {
+    const k = localStorage.getItem("consumer");    if (null === k) {
+    setConsumer([]);    } else {
+    setConsumer(JSON.parse(k));    }  }, []);
+
+        return (
         <div className="card m-4">
             <h5 className="card-header">Ethereum Staking monthly profit schedule</h5>
             <div className="card-body">
                 <ul className="list-group">
                     {
-                        book?.map(r => <Line key={r.id} book={r} />)
+                        consumer?.map(consum => <Line key={consum.id} consum={consum} />)
                     }
                 </ul>
             </div>

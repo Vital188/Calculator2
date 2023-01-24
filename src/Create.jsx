@@ -1,11 +1,12 @@
-import { useState, useContext } from "react";
-import Book from "./Contexts/Book";
+import { useState, useEffect } from "react";
+// import Book from "./Contexts/Book";
 import Duration from "./Components/Data/Duration";
 import Reinvest from "./Components/Data/Reinvest";
 import Rewardrate from "./Components/Data/Rewardrate";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { create } from "./Functions/localStorage"
 
 function Create() {
   const [amount, setAmount] = useState('');
@@ -13,16 +14,24 @@ function Create() {
   const [rewardRate, setrewardRate] = useState('0');
   const [duration, setDuration] = useState('0');
   const [reinvest, setReinvest] = useState('0');
-  const { setCreateData} = useContext(Book);
+  // const { setCreateData} = useContext(Book);
+  const [createData, setCreateData] = useState(null);
+    const key = 'consumer';
+    useEffect(() => {
+        if (null === createData) {
+          return;
+        }
+        create(key, createData);
+      }, [createData]);
  
 
   const add = () => {
     setCreateData({
-      amount,
+      amount: parseFloat(amount),
       startDate,
-      rewardRate,
-      duration,
-      reinvest
+      rewardRate: parseFloat(rewardRate),
+      duration: parseFloat(duration),
+      reinvest: parseFloat(reinvest)
     });
     setAmount('')
     setStartDate('');

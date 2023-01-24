@@ -1,11 +1,40 @@
-import { useContext } from 'react';
-import Book from './Contexts/Book';
 
-function Line({ book }) {
 
-    const { setDeleteData, setModalData } = useContext(Book);
+function Line({ consum }) {
+
+
 
     return (
+        <>
+        <table class="table table-bordered">
+<thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
         <li className="list-group-item">
             <div className="line" style={{
                 justifyContent: 'center'
@@ -14,42 +43,27 @@ function Line({ book }) {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                <div className="line__content__info">
-                        {book.images ? <div className='img-bin'>
-                            <img src={book.images} alt={book.type}>
-                            </img>
-                        </div> : <span className="red-image">No image</span>}
+                                    <div className="line__content__title">
+                     Category:   {consum.amount}
                     </div>
-                    <div className="line__content__title">
-                     Category:   {book.titl}
+                     <div className="line__content__info">
+                     <b>Type:</b>   {consum.duration}
                     </div>
                     <div className="line__content__info">
-                        {book.image ? <div className='img-bin'>
-                            <img src={book.image} alt={book.type}>
-                            </img>
-                        </div> : <span className="red-image">No image</span>}
-                    </div>
-                    <div className="line__content__info">
-                     <b>Type:</b>   {book.type}
-                    </div>
-                    <div className="line__content__info">
-                    <b> Years:</b>   {book.years}
+                    <b> Years:</b>   {consum.rewardRate}
                     </div>
                 <div className="line__content__info">
-                <b> Color:</b>   {book.color}
-                </div>
-                <div className="line__content__info">
-                <b> Price:</b>   {book.price}
+                <b> Color:</b>   {consum.reinvest}
                 </div>
                 </div>
                 <div className="line__buttons" style={{
                     margin: '0px'
                 }}>
-                    <button onClick={() => setModalData(book)} type="button" className="btn btn-outline-success">Edit</button>
-                    <button onClick={() => setDeleteData(book)} type="button" className="btn btn-outline-danger">Delete</button>
+                   
                 </div>
             </div>
         </li>
+        </>
     )
 }
 
