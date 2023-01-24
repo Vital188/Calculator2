@@ -4,7 +4,7 @@ import Book from './Contexts/Book';
 function Line({ book }) {
 
     const { setDeleteData, setModalData } = useContext(Book);
-console.log(book)
+
     return (
         <li className="list-group-item">
             <div className="line" style={{
@@ -35,12 +35,12 @@ console.log(book)
                     <div className="line__content__info">
                     <b> Years:</b>   {book.years}
                     </div>
-                    {/* <div className="line__content__info">
-                    <b> Color:</b>   {book.color}
-                    </div>
-                    <div className="line__content__info">
-                    <b> Price:</b>   {book.price}
-                    </div> */}
+                <div className="line__content__info">
+                <b> Color:</b>   {book.color}
+                </div>
+                <div className="line__content__info">
+                <b> Price:</b>   {book.price}
+                </div>
                 </div>
                 <div className="line__buttons" style={{
                     margin: '0px'

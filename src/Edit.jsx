@@ -1,22 +1,12 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import Book from './Contexts/Book'
-// import getBase64 from './Functions/getBase64';
 import Year from "./Components/Data/Year";
 function Edit() {
 
     const [type, setType] = useState('');
     const [years, setYears] = useState('');
-    const fileInput = useRef();
     const [photoPrint, setPhotoPrint] = useState(null);
     const [deletePhoto, setDeletePhoto] = useState(false);
-
-    // const doPhoto = () => {
-    //     getBase64(fileInput.current.files[0])
-    //         .then(photo => setPhotoPrint(photo))
-    //         .catch(_ => {
-    //             // tylim
-    //         })
-    // }
 
     const { setEditData, modalData, setModalData } = useContext(Book);
 
@@ -24,9 +14,7 @@ function Edit() {
         setEditData({
             type,
             years,
-            id: modalData.id,
-            deletePhoto: deletePhoto ? 1 : 0,
-            image: photoPrint
+            id: modalData.id
         });
         setModalData(null);
         setDeletePhoto(false);
@@ -79,17 +67,7 @@ function Edit() {
             </option>
           ))}
         </select>
-                                   {/* <div className="mb-3">
-                                <label className="form-label">Image</label>
-                                <input ref={fileInput} type="file" className="form-control" onChange={doPhoto} />
-                            </div>
-                            {photoPrint ? <div className='img-bin'>
-                                <label htmlFor="image-delete">X</label>
-                                <input id="image-delete" type="checkbox" checked={deletePhoto} onChange={() => setDeletePhoto(d => !d)}></input>
-                                <img src={photoPrint} alt="upload"></img>
-                            </div> : null}
-                            <button onClick={edit} type="button" className="btn btn-outline-success">Save</button> */}
-                        </div>
+                       </div>
                     </div>
                 </div>
             </div>
