@@ -80,6 +80,7 @@ function Main() {
             category
         }}>
             <div className="container">
+                
                 <div className="row">
                     <div className="col col-lg-4 col-md-12">
                         <Create />
