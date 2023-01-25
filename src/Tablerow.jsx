@@ -1,11 +1,14 @@
-function Tablerow({column}) {
+function Tablerow({column, date}) {
 
 
     return (
-      
-            <tr>
-                {column.map(val => <th>{val}</th>)}
-            </tr>
+      <>
+            <th>
+                {column} 
+            
+             {date}
+           </th>
+        </>    
         
     
     )

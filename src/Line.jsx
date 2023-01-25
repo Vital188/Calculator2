@@ -6,10 +6,20 @@ function Line({ consum }) {
     let val = [];
     for(let i = 1 ; i <= (consum.duration); i++) 
     val.push(i) ;
+
+    let dates = [];
+    for (let i = 1; i <= (consum.duration); i++) 
+    dates[i] = consum.rewardRate;
+
+    let additional = 7/360 - 7/365;
+    let amountToDate = [];
+    for (let i = 1; i <= (consum.duration); i++) 
+    amountToDate[i] = i*additional;
     
     let heading = ['Line #', 'Reward Date', 'Investment amount', 'Reward amount', 'Total Reward Amount to Date', 'Stacking Reward Rate' ];
     let body = val;
-
+    
+    console.log(amountToDate)
 
     return (
         <>
@@ -106,8 +116,7 @@ function Line({ consum }) {
         </tfoot> */}
 
         <div >
-    
-                <Table heading={heading} body={body} />,
+                <Table heading={heading} body={body} dates={dates} />,
             </div>
     
         </>

@@ -1,16 +1,21 @@
-// import TableRow from './Tablerow';
+import TableRow from './Tablerow';
 
-function Table({heading, body}) {
+function Table({heading, body, dates}) {
 
 return (
-    <table >
+    <table  >
                 <thead>
-                    <th>
-                        {heading.map(head => <th>{head}</th>)}
-                    </th>
+                    <td >
+                        {heading.map(head => <tr style={{border: '1px solid black '}}>{head}</tr>)}
+                    </td>
                 </thead>
                 <tbody>
-                    {body.map(column => <th>{column}</th>)}
+                    <tr>
+                    {body.map(column => <TableRow  column={column} />)}  
+                    </tr> 
+                    <tr>          
+                    {dates.map(date => <TableRow  date={date} />)}
+                    </tr>              
                 </tbody>
             </table>
 )
