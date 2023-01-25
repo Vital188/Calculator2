@@ -6,7 +6,9 @@ import Rewardrate from "./Components/Data/Rewardrate";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { create } from "./Functions/localStorage"
+import { create } from "./Functions/localStorage";
+
+
 
 function Create() {
   const [amount, setAmount] = useState('');
@@ -33,11 +35,11 @@ function Create() {
       duration: parseFloat(duration),
       reinvest: parseFloat(reinvest)
     });
-    setAmount('')
-    setStartDate('');
-    setrewardRate('0');
-    setDuration('0');
-    setReinvest('0')
+    // setAmount('')
+    // setStartDate('');
+    // setrewardRate('0');
+    // setDuration('0');
+    // setReinvest('0')
   };
 
   const remove = () => {
@@ -48,8 +50,9 @@ function Create() {
     setReinvest('0')
   };
 
-
+ 
   return (
+
     <div className="card m-4">
       <h5 className="card-header">New Ethereum Staking customer Data</h5>
       <div className="card-body">
@@ -145,7 +148,7 @@ function Create() {
         </div>
       </div>
       </div>
-      
+   
   );
 }
 

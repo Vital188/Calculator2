@@ -1,16 +1,22 @@
-
+import Table from './Table'
 
 function Line({ consum }) {
 
-
+    // eslint-disable-next-line no-array-constructor
+    let val = [];
+    for(let i = 1 ; i <= (consum.duration); i++) 
+    val.push(i) ;
     
+    let heading = ['Line #', 'Reward Date', 'Investment amount', 'Reward amount', 'Total Reward Amount to Date', 'Stacking Reward Rate' ];
+    let body = val;
+
 
     return (
         <>
-        <table class="table table-bordered">
+        {/* <table class="table table-bordered">
 <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col"># Line</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
@@ -18,21 +24,22 @@ function Line({ consum }) {
   </thead>
   <tbody>
     <tr>
-      <th scope="row"> 
-      </th>
-      <td>{consum.duration}</td>
+      <th scope="col"> 
+      
+      {val}
+        </th>
       <td>{consum.rewardRate}</td>
       <td>{consum.amount}</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <th scope="col"></th>
       <td>Jacob</td>
-      <td>Thornton</td>
+      <td>{val}</td>
       <td>@fat</td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
+      <td colspan="2"></td>
       <td>@twitter</td>
     </tr>
   </tbody>
@@ -65,6 +72,44 @@ function Line({ consum }) {
                 </div>
             </div>
         </li>
+
+        <thead>
+            <tr>
+                <th >Month</th>
+                <th >Principal</th>
+                <th >Interest</th>
+                <th >Payment</th>
+                <th >Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+                <tr>
+                    <th >{val}</th>
+                    <td ></td>
+                    <td >{consum.rewardDate}</td>
+                    <td >{consum.rewardDate}</td>
+                    <td >{consum.rewardDate}</td>
+                </tr>
+            {consum.duration}
+        </tbody>
+        <tfoot>
+            {consum.duration}
+                <tr>
+                    <th >Totals</th>
+                    <td >{consum.rewardRate}</td>
+                    <td >{consum.rewardDate}</td>
+                    <td >{consum.rewardDate}</td>
+                    <td ></td>
+                </tr>
+          
+        </tfoot> */}
+
+        <div >
+    
+                <Table heading={heading} body={body} />,
+            </div>
+    
         </>
     )
 }
