@@ -3,10 +3,30 @@ import moment from "moment/moment";
 
 function Line({ consum }) {
 
-    // eslint-disable-next-line no-array-constructor
+    
     let lineNumber = [];
     for(let i = 1 ; i <= (consum.duration); i++) 
     lineNumber.push(i) ;
+
+
+    let date = new Date();
+    let dt = date.getDate();
+    date.setDate(15);
+    if (dt >= 15) {
+      date.setMonth(date.getMonth() + 1);
+    }
+    date.setHours(23, 59, 59, 0);
+    let start = moment(date).format('L')
+    let starts = new Date(start);
+    let startDates = new Date(consum.startDate);
+    let difference = Math.abs(starts - startDates);
+    const diffDays = Math.ceil(difference/ (1000 * 60 * 60 * 24))
+    console.log(diffDays);
+
+    
+
+    let rewarddate = [];
+    for (let i = 1; i <= (consum.duration); i++);
 
     let rewardrate = [];
     for (let i = 1; i <= (consum.duration); i++){
@@ -36,7 +56,7 @@ function Line({ consum }) {
         <>
  
             <div >
-                <Table heading={heading} lineNumber={lineNumber} amountToDate={amountToDate} rewardrate={rewardrate} investmentamount={investmentamount} totalrewardamount={totalrewardamount} />,
+                <Table heading={heading} rewarddate={rewarddate} lineNumber={lineNumber} amountToDate={amountToDate} rewardrate={rewardrate} investmentamount={investmentamount} totalrewardamount={totalrewardamount} />,
             </div>
     
         </>
