@@ -3,7 +3,7 @@ import moment from "moment/moment";
 
 function Line({ consum }) {
     
-    moment.locale("de");
+    
     
     let lineNumber = [];
     for(let i = 1 ; i <= (consum.duration); i++) 

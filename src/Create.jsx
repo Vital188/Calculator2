@@ -17,10 +17,10 @@ function Create() {
   const [startDate, setStartDate] = useState(new Date());
   const [rewardRate, setrewardRate] = useState('0');
   const [duration, setDuration] = useState('0');
-  const [reinvest, setReinvest] = useState('0');
-  // const { setCreateData} = useContext(Book);
+  const [reinvest, setReinvest] = useState('0')
   const [createData, setCreateData] = useState(null);
-    const key = 'consumer';
+  const key = 'consumer';
+
     useEffect(() => {
         if (null === createData) {
           return;
@@ -127,10 +127,10 @@ function Create() {
           display: 'flex',
           justifyContent: 'space-between'
         }}>
-         <button onClick={add} startDate="button" className="btn btn-outline-success">
+         <button onClick={add} type="button" className="btn btn-outline-success">
           Add
         </button>
-        <button onClick={remove} startDate="button" className="btn btn-outline-danger">
+        <button onClick={remove} type="button" className="btn btn-outline-danger">
           Delete
         </button>
         </div>
