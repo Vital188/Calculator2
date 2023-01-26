@@ -1,9 +1,12 @@
 import TableRow from './TableRow';
+import TableRowe from './TableRowe';
 import TableRowq from './TableRowq';
 import TableRoww from './TableRoww';
+import TableRowr from './Tablerowr';
 
 
-function Table({heading, lineNumber, rewardrate, investmentamount}) {
+
+function Table({heading, lineNumber, rewardrate, investmentamount, amountToDate, totalrewardamount}) {
 
 return (
     <table  >
@@ -22,7 +25,12 @@ return (
                     <tr>
                     {investmentamount.map(columnthree => <TableRoww  columnthree={columnthree} />)}  
                     </tr>  
-                  
+                    <tr>
+                    {amountToDate.map(columnfour => <TableRowe  columnfour={columnfour} />)}  
+                    </tr>
+                    <tr>
+                    {totalrewardamount.map(columnfive => <TableRowr  columnfive={columnfive} />)}  
+                    </tr>
                     <tr>          
                      {rewardrate.map(rewardrat => <TableRowq  rewardrat={rewardrat} />)}
                     </tr>              

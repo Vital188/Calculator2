@@ -7,6 +7,8 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { create } from "./Functions/localStorage";
+import moment from "moment/moment";
+
 
 
 
@@ -25,12 +27,14 @@ function Create() {
         }
         create(key, createData);
       }, [createData]);
+
+    
  
 
   const add = () => {
     setCreateData({
       amount: parseFloat(amount),
-      startDate,
+      startDate: moment(startDate).format('L'),
       rewardRate: parseFloat(rewardRate),
       duration: parseFloat(duration),
       reinvest: parseFloat(reinvest)
@@ -67,27 +71,11 @@ function Create() {
                 </div>
         </div>
         <label className="form-label">Staking start date:</label>
-        <DatePicker className="form-control" style={{
+        <DatePicker format='yyyy-MM-dd'  className="form-control" style={{
           marginBottom: '20px'
         }}
-        selected={startDate} onChange={(date) => setStartDate(date)} />
-      {/* <select
-          className="form-select mb-4"
-          
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          aria-label="Default select example"
-        >
-          <option value={0} disabled>
-            Choose from list:
-          </option>
-          {Year?.map((cl) => (
-            <option key={cl.id} value={cl.id}>
-              {cl.titl}
-            </option>
-          ))}
-        </select> */}
-        <label className="form-label">Yearly stacking reward rate (%)</label>
+        selected={startDate}   onChange={(date) => setStartDate(date)} />
+            <label className="form-label">Yearly stacking reward rate (%)</label>
         <select
           className="form-select mb-4"
           value={rewardRate}
@@ -98,7 +86,7 @@ function Create() {
             Choose from list:
           </option>
           {Rewardrate?.map((rw) => (
-            <option key={rw.id} value={rw.id}>
+            <option key={rw.id} value={rw.type}>
               {rw.type}
             </option>
           ))}
