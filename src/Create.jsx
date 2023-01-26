@@ -34,7 +34,7 @@ function Create() {
   const add = () => {
     setCreateData({
       amount: parseFloat(amount),
-      startDate: moment(startDate).format('L'),
+      startDate: moment(startDate).locale('lt').format('L'),
       rewardRate: parseFloat(rewardRate),
       duration: parseFloat(duration),
       reinvest: parseFloat(reinvest)
