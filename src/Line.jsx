@@ -2,7 +2,8 @@ import Table from './Table';
 import moment from "moment/moment";
 
 function Line({ consum }) {
-
+    
+    moment.locale("de");
     
     let lineNumber = [];
     for(let i = 1 ; i <= (consum.duration); i++) 
@@ -21,12 +22,12 @@ function Line({ consum }) {
     let startDates = new Date(consum.startDate);
     let difference = Math.abs(starts - startDates);
     const diffDays = Math.ceil(difference/ (1000 * 60 * 60 * 24))
-    console.log(diffDays);
-
     
-
     let rewarddate = [];
-    for (let i = 1; i <= (consum.duration); i++);
+    for (let i = 1; i <= (consum.duration); i++)
+    rewarddate[i] = moment(starts.setMonth(starts.getMonth()+1)).format('L');
+    
+    console.log(diffDays, rewarddate);
 
     let rewardrate = [];
     for (let i = 1; i <= (consum.duration); i++){
