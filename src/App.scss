@@ -93,3 +93,8 @@ tr {
 th, td {
      display: block; 
     }
+
+tbody {
+    display:flex;
+    column-gap: 40px;
+}

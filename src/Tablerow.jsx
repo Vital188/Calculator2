@@ -1,17 +1,13 @@
-function Tablerow({column, date}) {
+function TableRow({column}) {
 
 
     return (
-      <>
-            <th>
-                {column} 
-            
-             {date}
-           </th>
-        </>    
-        
-    
+    <>
+        <th>
+       {column}
+       </th>                
+    </>    
     )
 }
 
-export default Tablerow
+export default TableRow

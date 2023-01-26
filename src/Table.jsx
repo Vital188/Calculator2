@@ -1,6 +1,9 @@
-import TableRow from './Tablerow';
+import TableRow from './TableRow';
+import TableRowq from './TableRowq';
+import TableRoww from './TableRoww';
 
-function Table({heading, body, dates}) {
+
+function Table({heading, lineNumber, rewardrate, investmentamount}) {
 
 return (
     <table  >
@@ -11,12 +14,19 @@ return (
                 </thead>
                 <tbody>
                     <tr>
-                    {body.map(column => <TableRow  column={column} />)}  
+                    {lineNumber.map(column => <TableRow  column={column} />)}  
+                    </tr>
+                    <tr>
+                    {lineNumber.map(column => <TableRow  column={column} />)}  
                     </tr> 
+                    <tr>
+                    {investmentamount.map(columnthree => <TableRoww  columnthree={columnthree} />)}  
+                    </tr>  
+                  
                     <tr>          
-                    {dates.map(date => <TableRow  date={date} />)}
+                     {rewardrate.map(rewardrat => <TableRowq  rewardrat={rewardrat} />)}
                     </tr>              
-                </tbody>
+                </tbody> 
             </table>
 )
 
