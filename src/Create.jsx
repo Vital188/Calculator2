@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 // import Book from "./Contexts/Book";
 import Duration from "./Components/Data/Duration";
 import Reinvest from "./Components/Data/Reinvest";
@@ -119,7 +119,7 @@ function Create() {
             Choose from list:
           </option>
           {Reinvest?.map((rein) => (
-            <option key={rein.id} value={rein.type}>
+            <option key={rein.id} value={rein.id}>
              {rein.type}
             </option>
           ))}

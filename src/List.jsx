@@ -1,30 +1,107 @@
-// import { useEffect, useState } from 'react';
 import Line from './Line';
-// import { read } from "./Functions/localStorage";
+import moment from 'moment/moment';
 
-function List({consumer}) {
+function List({consum}) {
 
-    // const [consumer, setConsumer] = useState(null);
-    // const [lastUpdate, setLastUpdate] = useState(Date.now());
-    // const key = 'consumer';
 
-    // useEffect(() => {
-    //     setConsumer(read(key));
-    //   }, [lastUpdate]);
-    
-    // useEffect(() => {
-    // const k = localStorage.getItem("consumer");    if (null === k) {
-    // setConsumer([]);    } else {
-    // setConsumer(JSON.parse(k));    }  }, []);
+    let futureYear = '';
+    let startdate = (consum.startDate);
+    if (consum.duration === 12){futureYear = moment(startdate).add(1, 'Y')}
+    else if (consum.duration === 24){futureYear = moment(startdate).add(2, 'Y')}
+    else if (consum.duration === 36){futureYear = moment(startdate).add(3, 'Y')};
+    let endDate = moment(futureYear).format('L');
+
+    let rewardrate = '';
+    if (consum.rewardRate === 7) {rewardrate = (7).toFixed(2) + '%'}
+    else if (consum.rewardRate === 10) {rewardrate = (10).toFixed(2) + '%'};
+
+    let reinvest = ''
+    if (consum.reinvest === 1) {reinvest = 'Yes'}
+    else if (consum.rewardRate === 2) {reinvest = 'No'};
 
         return (
         <div className="card m-4">
             <h5 className="card-header">Ethereum Staking monthly profit schedule</h5>
             <div className="card-body">
+            <div className="row">
+    <div className="col" style={{
+        display: 'flex',
+        fontSize: '20px',
+        justifyContent: 'center',
+        backgroundColor: 'skyblue',
+        marginTop: '-16px',
+        marginLeft: '14px',
+        marginRight: '14px'
+    }}>
+      <b>General Information</b>
+    </div>
+      </div>
+  <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+      <b>Client ID:</b> {consum.id}
+    </div>
+    </div>
+    <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+      <b>Initial Investment:</b> {(consum.amount).toFixed(6)}
+    </div>
+    </div>
+    <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+      <b>Yearly Stacking Reward:</b> {rewardrate}
+    </div>
+    </div>
+    <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+     <b>Start Date:</b> {consum.startDate}
+    </div>
+    </div>
+    <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+      <b>End Date:</b> {endDate}
+    </div>
+    </div>
+    <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+      <b>Reward Payment Date:</b> 15
+    </div>
+    </div>
+    <div className="row">
+    <div className="col" style={{
+            border: '1px solid black',
+            margin: '0 15px'
+    }}>
+      <b>Reinvestment Stacking Reward:</b> {reinvest}
+    </div>
+    </div>
+    <div className="col" style={{
+        display: 'flex',
+        fontSize: '20px',
+        justifyContent: 'center',
+        backgroundColor: 'skyblue'
+    }}>
+      <b>Profit Schedule</b>
+    </div>
                 <ul className="list-group">
-                    {
-                        consumer?.map(consum => <Line key={consum.id} consum={consum} />)
-                    }
+                   <Line consum={consum} />
                 </ul>
             </div>
         </div>

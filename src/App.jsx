@@ -50,7 +50,9 @@ function Main() {
                         <Create />
                     </div>
                     <div className="col col-lg-8 col-md-12">
-                        <List  consumer={consumer}/>
+                    {
+                        consumer?.map(consum => <List key={consum.id} consum={consum} />)
+                    }
                     </div>
                 </div>
             </div>
