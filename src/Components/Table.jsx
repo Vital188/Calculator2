@@ -7,7 +7,7 @@ import TableRowt from './TableRowt';
 
 
 
-function Table({heading, lineNumber, rewarddate, rewardrate, investmentamount, amountToDate, totalrewardamount}) {
+function Table({ lineNumber, rewarddate, rewardrate, investmentamount, amountToDate, totalrewardamount}) {
 
 return (
     <table  >

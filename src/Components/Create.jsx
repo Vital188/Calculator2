@@ -1,17 +1,12 @@
 import { useState, useContext } from "react";
-// import Book from "./Contexts/Book";
 import Duration from "./Data/Duration";
 import Reinvest from "./Data/Reinvest";
 import Rewardrate from "./Data/Rewardrate";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import moment from "moment/moment";
 import DataContext from "../Contexts/DataContext";
-
-
-
 
 function Create() {
   const [amount, setAmount] = useState('');

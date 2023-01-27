@@ -12,12 +12,12 @@ function List({consum}) {
     let endDate = moment(futureYear).format('L');
 
     let rewardrate = '';
-    if (consum.rewardRate === 7) {rewardrate = (7).toFixed(2) + '%'}
+    if (consum.rewardRate === 8) {rewardrate = (8).toFixed(2) + '%'}
     else if (consum.rewardRate === 10) {rewardrate = (10).toFixed(2) + '%'};
 
     let reinvest = ''
     if (consum.reinvest === 1) {reinvest = 'Yes'}
-    else if (consum.rewardRate === 2) {reinvest = 'No'};
+    else if (consum.reinvest === 2) {reinvest = 'No'};
 
         return (
         <div className="card m-4">
@@ -81,7 +81,7 @@ function List({consum}) {
             border: '1px solid black',
             margin: '0 15px'
     }}>
-      <b>Reward Payment Date:</b> 15
+      <b>Reward Payment Date:</b> 23
     </div>
     </div>
     <div className="row">

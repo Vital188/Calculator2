@@ -43,7 +43,7 @@ function Main() {
         }}>
               <div className="container">
                 <div className="d-grid gap-0">
-                <div class="p-2 bg-success border text-xl-center" style={{
+                <div className="p-2 bg-success border text-xl-center" style={{
                     fontSize: '30px',
                     borderRadius: '10px',
                     marginTop: '15px'
