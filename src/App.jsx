@@ -3,10 +3,13 @@ import Create from './Create';
 import List from './List';
 import { read} from './Functions/localStorage';
 import './App.scss';
+import DataContext from '../src/Contexts/DataContext';
+import { create } from "./Functions/localStorage";
 
 function Main() {
 
     const [consumer, setConsumer] = useState(null);
+    const [createData, setCreateData] = useState(null);
     const [lastUpdate, setLastUpdate] = useState(Date.now());
     const key = 'consumer';
 
@@ -14,12 +17,25 @@ function Main() {
         setConsumer(read(key));
       }, [lastUpdate]);
     
+    // useEffect(() => {
+    // const k = localStorage.getItem("consumer");    if (null === k) {
+    // setConsumer([]);    } else {
+    // setConsumer(JSON.parse(k));    }  }, []);
+
     useEffect(() => {
-    const k = localStorage.getItem("consumer");    if (null === k) {
-    setConsumer([]);    } else {
-    setConsumer(JSON.parse(k));    }  }, []);
+        if (null === createData) {
+          return;
+        }
+        create(key, createData);
+        setLastUpdate(Date.now())
+      }, [createData]);
+
     
      return (
+
+        <DataContext.Provider value={{
+            setCreateData
+        }}>
               <div className="container">
                 <div className="d-grid gap-0">
                 <div class="p-2 bg-success border text-xl-center" style={{
@@ -34,10 +50,11 @@ function Main() {
                         <Create />
                     </div>
                     <div className="col col-lg-8 col-md-12">
-                        <List />
+                        <List  consumer={consumer}/>
                     </div>
                 </div>
             </div>
+            </DataContext.Provider>
     )
 }
 export default Main;

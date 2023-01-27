@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import Line from './Line';
-import { read } from "./Functions/localStorage";
+// import { read } from "./Functions/localStorage";
 
-function List() {
+function List({consumer}) {
 
-    const [consumer, setConsumer] = useState(null);
-    const [lastUpdate, setLastUpdate] = useState(Date.now());
-    const key = 'consumer';
+    // const [consumer, setConsumer] = useState(null);
+    // const [lastUpdate, setLastUpdate] = useState(Date.now());
+    // const key = 'consumer';
 
-    useEffect(() => {
-        setConsumer(read(key));
-      }, [lastUpdate]);
+    // useEffect(() => {
+    //     setConsumer(read(key));
+    //   }, [lastUpdate]);
     
-    useEffect(() => {
-    const k = localStorage.getItem("consumer");    if (null === k) {
-    setConsumer([]);    } else {
-    setConsumer(JSON.parse(k));    }  }, []);
+    // useEffect(() => {
+    // const k = localStorage.getItem("consumer");    if (null === k) {
+    // setConsumer([]);    } else {
+    // setConsumer(JSON.parse(k));    }  }, []);
 
         return (
         <div className="card m-4">

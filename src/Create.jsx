@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 // import Book from "./Contexts/Book";
 import Duration from "./Components/Data/Duration";
 import Reinvest from "./Components/Data/Reinvest";
@@ -6,8 +6,9 @@ import Rewardrate from "./Components/Data/Rewardrate";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { create } from "./Functions/localStorage";
+
 import moment from "moment/moment";
+import DataContext from "./Contexts/DataContext";
 
 
 
@@ -18,15 +19,15 @@ function Create() {
   const [rewardRate, setrewardRate] = useState('0');
   const [duration, setDuration] = useState('0');
   const [reinvest, setReinvest] = useState('0')
-  const [createData, setCreateData] = useState(null);
-  const key = 'consumer';
+  // const key = 'consumer';
+  const { setCreateData } = useContext(DataContext);
 
-    useEffect(() => {
-        if (null === createData) {
-          return;
-        }
-        create(key, createData);
-      }, [createData]);
+    // useEffect(() => {
+    //     if (null === createData) {
+    //       return;
+    //     }
+    //     create(key, createData);
+    //   }, [createData]);
 
     
  
@@ -39,11 +40,11 @@ function Create() {
       duration: parseFloat(duration),
       reinvest: parseFloat(reinvest)
     });
-    // setAmount('')
-    // setStartDate('');
-    // setrewardRate('0');
-    // setDuration('0');
-    // setReinvest('0')
+    setAmount('')
+    setStartDate('');
+    setrewardRate('0');
+    setDuration('0');
+    setReinvest('0')
   };
 
   const remove = () => {
@@ -127,10 +128,10 @@ function Create() {
           display: 'flex',
           justifyContent: 'space-between'
         }}>
-         <button onClick={add} type="button" className="btn btn-outline-success">
+         <button onClick={add}  className="btn btn-outline-success">
           Add
         </button>
-        <button onClick={remove} type="button" className="btn btn-outline-danger">
+        <button onClick={remove}  className="btn btn-outline-danger">
           Delete
         </button>
         </div>
