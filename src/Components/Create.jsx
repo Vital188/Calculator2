@@ -1,14 +1,14 @@
 import { useState, useContext } from "react";
 // import Book from "./Contexts/Book";
-import Duration from "./Components/Data/Duration";
-import Reinvest from "./Components/Data/Reinvest";
-import Rewardrate from "./Components/Data/Rewardrate";
+import Duration from "./Data/Duration";
+import Reinvest from "./Data/Reinvest";
+import Rewardrate from "./Data/Rewardrate";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import moment from "moment/moment";
-import DataContext from "./Contexts/DataContext";
+import DataContext from "../Contexts/DataContext";
 
 
 
@@ -19,19 +19,8 @@ function Create() {
   const [rewardRate, setrewardRate] = useState('0');
   const [duration, setDuration] = useState('0');
   const [reinvest, setReinvest] = useState('0')
-  // const key = 'consumer';
-  const { setCreateData } = useContext(DataContext);
-
-    // useEffect(() => {
-    //     if (null === createData) {
-    //       return;
-    //     }
-    //     create(key, createData);
-    //   }, [createData]);
-
-    
+  const { setCreateData } = useContext(DataContext);  
  
-
   const add = () => {
     setCreateData({
       amount: parseFloat(amount),
@@ -47,15 +36,6 @@ function Create() {
     setReinvest('0')
   };
 
-  const remove = () => {
-    setAmount('')
-    setStartDate(new Date());
-    setrewardRate('0');
-    setDuration('0');
-    setReinvest('0')
-  };
-
- 
   return (
 
     <div className="card m-4">
@@ -126,18 +106,14 @@ function Create() {
         </select>
         <div className="buttons" style={{
           display: 'flex',
-          justifyContent: 'space-between'
+          justifyContent: 'center'
         }}>
          <button onClick={add}  className="btn btn-outline-success">
           Add
         </button>
-        <button onClick={remove}  className="btn btn-outline-danger">
-          Delete
-        </button>
         </div>
       </div>
-      </div>
-   
+    </div>
   );
 }
 

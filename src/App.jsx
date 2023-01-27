@@ -1,27 +1,23 @@
 import { useState, useEffect } from 'react';
-import Create from './Create';
-import List from './List';
-import { read} from './Functions/localStorage';
+import Create from './Components/Create';
+import List from './Components/List';
 import './App.scss';
 import DataContext from '../src/Contexts/DataContext';
-import { create } from "./Functions/localStorage";
+import { create, destroy, read } from "./Functions/localStorage";
 
 function Main() {
 
     const [consumer, setConsumer] = useState(null);
     const [createData, setCreateData] = useState(null);
     const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const [deleteData, setDeleteData] = useState(null);
     const key = 'consumer';
 
     useEffect(() => {
         setConsumer(read(key));
       }, [lastUpdate]);
     
-    // useEffect(() => {
-    // const k = localStorage.getItem("consumer");    if (null === k) {
-    // setConsumer([]);    } else {
-    // setConsumer(JSON.parse(k));    }  }, []);
-
+ 
     useEffect(() => {
         if (null === createData) {
           return;
@@ -30,11 +26,20 @@ function Main() {
         setLastUpdate(Date.now())
       }, [createData]);
 
+      useEffect(() => {
+        if (null === deleteData) {
+          return;
+        }
+        destroy(key, deleteData.id);
+        setLastUpdate(Date.now());
+         }, [deleteData]);
+
     
      return (
 
         <DataContext.Provider value={{
-            setCreateData
+            setCreateData,
+            setDeleteData
         }}>
               <div className="container">
                 <div className="d-grid gap-0">
@@ -42,7 +47,7 @@ function Main() {
                     fontSize: '30px',
                     borderRadius: '10px',
                     marginTop: '15px'
-                }}>Ethereum Staking Profit Calculator</div>
+                }}><b>Ethereum Staking Profit Calculator</b></div>
                 </div>
 
                 <div className="row">

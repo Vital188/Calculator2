@@ -11,11 +11,6 @@ function Table({heading, lineNumber, rewarddate, rewardrate, investmentamount, a
 
 return (
     <table  >
-                {/* <thead>
-                    <td >
-                        {heading.map(head => <tr style={{border: '1px solid black '}}>{head}</tr>)}
-                    </td>
-                </thead> */}
                 <tbody>
                 <thead>
                     <td >

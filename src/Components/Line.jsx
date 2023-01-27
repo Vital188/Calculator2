@@ -1,9 +1,11 @@
 import Table from './Table';
 import moment from "moment/moment";
+import DataContext from '../Contexts/DataContext';
+import { useContext } from 'react';
 
 function Line({ consum }) {
     
-    
+    const {setDeleteData} = useContext(DataContext);   
     
     let lineNumber = [];
     for(let i = 1 ; i <= (consum.duration); i++) 
@@ -33,7 +35,7 @@ function Line({ consum }) {
     for (let i = 1; i <= (consum.duration); i++){
         if (consum.rewardRate === 7) {rewardrate[i] = (7).toFixed(2) + '%'} 
         else {rewardrate[i] = (10).toFixed(2) + '%'} }
-    // rewardrate[i] = consum.rewardRate;
+    
 
     let additional = 7/360 - 7/365;
     let amountToDate = [];
@@ -51,7 +53,7 @@ function Line({ consum }) {
     let heading = ['Line #', 'Reward Date', 'Investment amount', 'Reward amount', 'Total Reward Amount to Date', 'Stacking Reward Rate' ];
     
     
-    console.log(amountToDate)
+ 
 
     return (
         <>
@@ -59,6 +61,9 @@ function Line({ consum }) {
             <div >
                 <Table heading={heading} rewarddate={rewarddate} lineNumber={lineNumber} amountToDate={amountToDate} rewardrate={rewardrate} investmentamount={investmentamount} totalrewardamount={totalrewardamount} />,
             </div>
+            <button onClick={() => setDeleteData(consum)}  className="btn btn-outline-danger">
+          Delete
+        </button>
     
         </>
     )
