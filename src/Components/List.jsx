@@ -102,7 +102,7 @@ function List({consum}) {
       <b>Profit Schedule</b>
     </div>
                 <ul className="list-group">
-                   <Line consum={consum} />
+                   <Line consum={consum} endDate={endDate} />
                 </ul>
             </div>
             {/* <CSVDownload data={../} target="_blank" />; */}
