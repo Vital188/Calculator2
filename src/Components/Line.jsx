@@ -1,13 +1,11 @@
 import Table from './Table';
 import moment from "moment/moment";
 import DataContext from '../Contexts/DataContext';
-import { useContext} from 'react';
-// import { DownloadTableExcel } from 'react-export-table-to-excel';
+import { useContext, useRef} from 'react';
 
-function Line({ consum }) {
 
-    // const Line = () =>  {
-    //     const tableRef = useRef(null);
+function Line  ({ consum }) {    
+        
     
     const {setDeleteData} = useContext(DataContext);   
     
@@ -49,9 +47,10 @@ function Line({ consum }) {
     }
     
     let investmentamount = [];
-    for(let i = 1 ; i <= (consum.duration); i++)
-     if (consum.reinvest === 1) {investmentamount[i] = Number((consum.amount) + amountToDate[i]).toFixed(6)}
+    for(let i = 1 ; i <= (consum.duration); i++){
+     if (consum.reinvest === 1) {investmentamount[i] = Number((consum.amount) + todate[i]+1).toFixed(6)}
      else {investmentamount[i] = Number(consum.amount).toFixed(6)};
+    }
 
     let totalrewardamount = [];
     for (let i = 1; i <= (consum.duration); i++){ 
@@ -66,11 +65,12 @@ function Line({ consum }) {
         <>
  
             <div >
-                <Table heading={heading} rewarddate={rewarddate} lineNumber={lineNumber} amountToDate={amountToDate} rewardrate={rewardrate} investmentamount={investmentamount} totalrewardamount={totalrewardamount} />,
+                <Table  heading={heading} rewarddate={rewarddate} lineNumber={lineNumber} amountToDate={amountToDate} rewardrate={rewardrate} investmentamount={investmentamount} totalrewardamount={totalrewardamount} />,
             </div>
             <button onClick={() => setDeleteData(consum)}  className="btn btn-outline-danger">
           Delete
         </button>
+        
         </>
     )
 
