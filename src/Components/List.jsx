@@ -1,5 +1,6 @@
 import Line from './Line';
 import moment from 'moment/moment';
+// import { CSVDownload } from "react-csv";
 
 function List({consum}) {
 
@@ -104,7 +105,9 @@ function List({consum}) {
                    <Line consum={consum} />
                 </ul>
             </div>
+            {/* <CSVDownload data={../} target="_blank" />; */}
         </div>
+        
     );
 }
 

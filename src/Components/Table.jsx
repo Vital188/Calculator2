@@ -1,23 +1,20 @@
-import TableRow from './TableRow';
-import TableRowe from './TableRowe';
-import TableRowq from './TableRowq';
-import TableRoww from './TableRoww';
-import TableRowr from './Tablerowr';
-import TableRowt from './TableRowt';
 
 
 
-function Table({ lineNumber, rewarddate, rewardrate, investmentamount, amountToDate, totalrewardamount}) {
+
+const Table = ({ lineNumber, rewarddate, rewardrate, investmentamount, amountToDate, totalrewardamount}) => {
+
 
 return (
-    <table  >
+    
+    <table >
                 <tbody>
                 <thead>
                     <td >
                         # Line
                     </td>
                     <tr>
-                    {lineNumber.map(column => <TableRow  column={column} />)}  
+                    {lineNumber.map(column => <th>{column}</th>)}  
                     </tr>
                 </thead>
                 <thead>
@@ -25,7 +22,7 @@ return (
                     Reward Date
                     </td>
                     <tr>
-                    {rewarddate.map(columntwo => <TableRowt  columntwo={columntwo} />)}  
+                    {rewarddate.map(columntwo => <th>{columntwo}</th>)}  
                     </tr>
                     </thead>
                     <thead>
@@ -33,7 +30,7 @@ return (
                     Investment amount
                     </td> 
                     <tr>
-                    {investmentamount.map(columnthree => <TableRoww  columnthree={columnthree} />)}  
+                    {investmentamount.map(columnthree => <th>{columnthree}</th>)}  
                     </tr>
                     </thead>
                     <thead>
@@ -41,7 +38,7 @@ return (
                     Reward amount
                     </td>   
                     <tr>
-                    {amountToDate.map(columnfour => <TableRowe  columnfour={columnfour} />)}  
+                    {amountToDate.map(columnfour => <th>{columnfour}</th>)}  
                     </tr>
                     </thead>
                     <thead>
@@ -49,7 +46,7 @@ return (
                     Total Reward Amount to Date
                     </td> 
                     <tr>
-                    {totalrewardamount.map(columnfive => <TableRowr  columnfive={columnfive} />)}  
+                    {totalrewardamount.map(columnfive => <th>{columnfive}</th>)}  
                     </tr>
                     </thead>
                     <thead>
@@ -57,12 +54,14 @@ return (
                     Stacking Reward Rate
                     </td> 
                     <tr>          
-                     {rewardrate.map(rewardrat => <TableRowq  rewardrat={rewardrat} />)}
+                     {rewardrate.map(columnsix => <th>{columnsix}</th>)}
                     </tr>
                     </thead>              
                 </tbody>
                  
             </table>
+
+          
 )
 
 
