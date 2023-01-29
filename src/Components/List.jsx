@@ -50,7 +50,7 @@ function List({consum}) {
             border: '1px solid black',
             margin: '0 15px'
     }}>
-      <b>Initial Investment:</b> {(consum.amount).toFixed(6)}
+      <b>Initial Investment:</b> {consum.amount}
     </div>
     </div>
     <div className="row">
@@ -105,7 +105,6 @@ function List({consum}) {
                    <Line consum={consum} endDate={endDate} />
                 </ul>
             </div>
-            {/* <CSVDownload data={../} target="_blank" />; */}
         </div>
         
     );
