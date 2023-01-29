@@ -67,12 +67,13 @@ function Line  ({ consum, endDate }) {
     // let additional = Number((consum.amount)/100*(consum.rewardRate)/365*daysdifferent[i]).toFixed(6);
     let amountToDate = [];
     let todate = [];
-    let pavr = [];
     let zero = 0;
+    // let note = 0
     for (let i = 1; i <= (consum.duration)+1; i++) {
     amountToDate[i] =((consum.amount)/100*(consum.rewardRate)/365*daysdifferent[i]).toFixed(6);
     todate[i] =((consum.amount)/100*(consum.rewardRate)/365*daysdifferent[i]);
     todate[0] = zero;
+    // note = todate[i] + todate[i+1];
     // pavr =  todate.reduce(previousValue, currentValue) => (previousValue + currentValue)
     }
     
@@ -82,10 +83,34 @@ function Line  ({ consum, endDate }) {
      else {investmentamount[i] = Number(consum.amount).toFixed(6)};
     }
 
+
+      let newValues = todate.map((curr, i, array) => {
+        return array[i] += array[i-1] ? array[i-1] : 0
+      })
     let totalrewardamount = [];
     for (let i = 1; i <= (consum.duration)+1; i++){ 
-    totalrewardamount[i] += todate[i]++;
+    totalrewardamount[i] = (newValues[i]).toFixed(6);
     }
+
+
+  //  let mavr = [];
+  //   for (let i = 1; i <= (consum.duration)+1; i++){ 
+  //     pavr[0] = todate[0] + todate[1];
+      // mavr[i] = todate[i].reduce(
+      //   (accumulator, currentValue) => accumulator + currentValue,
+      //   0,
+      // );
+      // }
+
+      
+      
+      
+        
+     
+
+      
+
+  //  pavr = todate.map((i) => i + [i+1]);
 
     // [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, currentIndex, array) {
     //   console.log(previousValue + currentValue);
@@ -106,7 +131,7 @@ function Line  ({ consum, endDate }) {
       // }
     let heading = ['Line #', 'Reward Date', 'Investment amount', 'Reward amount', 'Total Reward Amount to Date', 'Stacking Reward Rate' ];
     
-    console.log(todate, totalrewardamount);
+    console.log(newValues);
 
 
     return (
