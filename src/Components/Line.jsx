@@ -54,7 +54,7 @@ function Line  ({ consum, endDate }) {
     for(let i = 1 ; i <= (consum.duration)+1; i++){
      if (consum.reinvest === 1) {investmentamount[i] = Number((consum.amount) + newValues[i]).toFixed(6)}
      else if (consum.reinvest === 2) {investmentamount[i] = Number(consum.amount).toFixed(6)};
-     investmentamount[1]= ((consum.amount).toFixed(6));
+     investmentamount[1] = ((consum.amount).toFixed(6));
     }
 
     let amountToDate = [];
