@@ -7,6 +7,21 @@ const tableRef = useRef(null);
 
 return (
     <div>
+
+<DownloadTableExcel
+                    filename="users table"
+                    sheet="users"
+                    currentTableRef={tableRef.current}
+                    
+                >
+                   <button style={{
+                        marginTop: '10px',
+                        marginBottom: '10px',
+                        borderRadius: '5px',
+                        backgroundColor: '#45cc45'
+                    }}> Export excel </button>
+
+                </DownloadTableExcel>
     <table ref={tableRef} >
                 <tbody>
                 <thead>
@@ -58,22 +73,8 @@ return (
                     </tr>
                     </thead>              
                 </tbody>
-
-                <DownloadTableExcel
-                    filename="users table"
-                    sheet="users"
-                    currentTableRef={tableRef.current}
-                    
-                >
-                   <button style={{
-                        marginTop: '20px',
-                        borderRadius: '5px',
-                        backgroundColor: '#45cc45'
-                    }}> Export excel </button>
-
-                </DownloadTableExcel>
-                 
             </table>
+               
                 </div>   
 )
 
